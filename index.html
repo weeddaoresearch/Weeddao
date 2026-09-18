@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WeedDAO — Cannabis Research & Data Interoperability</title>
-  <meta name="description" content="WeedDAO is a cannabis research and data cooperative in formation focused on laboratory data interoperability, normalization, measurement metadata, and open science.">
+  <title>WeedDAO — Cannabis Laboratory Data Interoperability</title>
+  <meta name="description" content="WeedDAO builds research and interoperability tools that make cannabis laboratory data easier to standardize, audit, exchange, and analyze.">
   <link rel="canonical" href="https://weeddao.org/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WeedDAO — Cannabis Research & Data Interoperability">
-  <meta property="og:description" content="Research, data interoperability, and open science for cannabis laboratory data.">
+  <meta property="og:title" content="WeedDAO — Cannabis Laboratory Data Interoperability">
+  <meta property="og:description" content="Research and interoperability tools for cannabis laboratory data, including the WeedDAO Interoperability Audit.">
   <meta property="og:url" content="https://weeddao.org/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="WeedDAO — Cannabis Research & Data Interoperability">
-  <meta name="twitter:description" content="Research, data interoperability, and open science for cannabis laboratory data.">
+  <meta name="twitter:title" content="WeedDAO — Cannabis Laboratory Data Interoperability">
+  <meta name="twitter:description" content="Research and interoperability tools for cannabis laboratory data.">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
@@ -20,7 +20,7 @@
     "@type": "Organization",
     "name": "WeedDAO",
     "url": "https://weeddao.org/",
-    "description": "A cannabis research and data cooperative in formation focused on laboratory data interoperability, normalization, measurement metadata, and open science.",
+    "description": "A cannabis research and data cooperative in formation building research and interoperability tools for laboratory data.",
     "sameAs": ["https://x.com/weeddaoresearch"]
   }
   </script>
@@ -33,6 +33,7 @@
         <span>WeedDAO</span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
+        <a href="#product">Audit</a>
         <a href="#research">Research</a>
         <a href="#principles">Principles</a>
         <a href="#contact">Contact</a>
@@ -44,34 +45,89 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Research · Data · Open Science</p>
-          <h1>Building better infrastructure for cannabis research data.</h1>
-          <p class="lede">WeedDAO is a research and data cooperative in formation exploring how public cannabis laboratory data can be made more consistent, interoperable, and useful for careful research.</p>
+          <p class="eyebrow">Research · Data · Interoperability</p>
+          <h1>Better infrastructure for cannabis laboratory data.</h1>
+          <p class="lede">WeedDAO builds research and interoperability tools that make cannabis lab data easier to standardize, audit, exchange, and analyze while preserving the meaning of the original source records.</p>
           <div class="actions">
-            <a class="button primary" href="#research">View current research</a>
-            <a class="button secondary" href="mailto:research@weeddao.org">Contact WeedDAO</a>
+            <a class="button primary" href="#product">View the audit</a>
+            <a class="button secondary" href="mailto:research@weeddao.org?subject=WeedDAO%20Interoperability%20Audit%20demo">Request a demo</a>
           </div>
-          <p class="micro">No token. No lab rankings. No medical claims.</p>
+          <p class="micro">Research and data cooperative in formation. No token. No lab rankings. No medical claims.</p>
         </div>
-        <aside class="hero-card" aria-label="Current focus">
-          <span class="status">Current focus</span>
-          <h2>Public Cannabis Laboratory Data Interoperability</h2>
-          <p>A preliminary five-state public-data pilot examining reporting structures, analyte naming, units, and measurement metadata.</p>
+        <aside class="hero-card" aria-label="Current product">
+          <span class="status">Current product</span>
+          <h2>WeedDAO Interoperability Audit</h2>
+          <p>A human-reviewed audit for supported cannabis laboratory CSV/JSON exports, focused on structural interoperability rather than laboratory performance.</p>
           <div class="metric-grid">
-            <div><strong>Pilot</strong><span>public-data study</span></div>
-            <div><strong>Review</strong><span>methodological feedback underway</span></div>
-            <div><strong>Draft</strong><span>not yet published</span></div>
+            <div><strong>CSV/JSON</strong><span>supported export formats</span></div>
+            <div><strong>Human QA</strong><span>review before delivery</span></div>
+            <div><strong>Source-safe</strong><span>raw values preserved</span></div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="research">
+    <section class="section product-section" id="product">
       <div class="wrap">
-        <p class="eyebrow">Current research</p>
+        <p class="eyebrow">WeedDAO Interoperability Audit</p>
         <div class="section-head">
-          <h2>Research readiness across public cannabis lab data</h2>
-          <p>Our first pilot asks a practical question: how difficult is it to combine public cannabis laboratory records across different reporting systems without losing the meaning of the original data?</p>
+          <h2>Find the structural problems that make lab data difficult to reuse.</h2>
+          <p>The audit examines supported laboratory exports for analyte naming, units, result and status semantics, metadata completeness, ambiguity, and schema-level issues that complicate exchange and downstream analysis.</p>
+        </div>
+
+        <div class="cards three">
+          <article class="card">
+            <span class="card-number">01</span>
+            <h3>Preserve the source</h3>
+            <p>Original labels, values, and provenance remain intact. Normalized fields are added as a separate analytical layer rather than replacing source-native data.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">02</span>
+            <h3>Surface interoperability issues</h3>
+            <p>Flag unmapped or ambiguous analytes, unit and status parsing issues, missing metadata, and structural exceptions that may require review.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">03</span>
+            <h3>Deliver usable outputs</h3>
+            <p>Receive an executive summary, technical appendix, machine-readable JSON, and exception output designed for QA, data, and laboratory-systems teams.</p>
+          </article>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-panel">
+            <p class="eyebrow">What the audit reports</p>
+            <ul class="check-list">
+              <li>Analyte mapping coverage</li>
+              <li>Unit parse coverage</li>
+              <li>Status parse coverage</li>
+              <li>Metadata field presence</li>
+              <li>Ambiguous and unmapped labels</li>
+              <li>Human-review items</li>
+              <li>Structural exceptions</li>
+              <li>Recommended export-structure improvements</li>
+            </ul>
+          </div>
+          <div class="product-panel">
+            <p class="eyebrow">Current scope</p>
+            <p>Designed for supported CSV and JSON exports, including ordinary long-format data, Massachusetts-style composite labels, and compatible wide-format files.</p>
+            <p class="muted">PDF/image ingestion, direct LIMS access, and API integrations are not part of the current product scope.</p>
+            <a class="text-link" href="mailto:research@weeddao.org?subject=WeedDAO%20Interoperability%20Audit%20demo">Request the public demonstration audit →</a>
+          </div>
+        </div>
+
+        <div class="disclaimer">
+          <strong>Scope note</strong>
+          <p>This audit evaluates data structure and interoperability characteristics of the supplied export. It does not determine laboratory analytical accuracy, regulatory compliance, accreditation status, or product safety.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="research">
+      <div class="wrap">
+        <p class="eyebrow">Public-data research</p>
+        <div class="section-head">
+          <h2>Research informs the product.</h2>
+          <p>Our research program studies how public cannabis laboratory records differ across reporting systems and how those differences can be handled without silently changing the meaning of source data.</p>
         </div>
         <div class="cards three">
           <article class="card">
@@ -82,18 +138,18 @@
           <article class="card">
             <span class="card-number">02</span>
             <h3>Audit normalization</h3>
-            <p>Analyte mappings and unit-like tokens are reviewed for collisions, ambiguity, and assumptions before any external research claims are made.</p>
+            <p>Analyte mappings, unit-like tokens, and schema assumptions are reviewed for collisions, ambiguity, and unsupported interpretation.</p>
           </article>
           <article class="card">
             <span class="card-number">03</span>
-            <h3>Invite independent review</h3>
-            <p>We are seeking methodological feedback from analytical chemistry and measurement-science experts before publication or expansion.</p>
+            <h3>Validate across formats</h3>
+            <p>We use public laboratory and state testing datasets to test schema adapters, provenance handling, deterministic behavior, and terminology coverage.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="work">
+    <section class="section" id="work">
       <div class="wrap split">
         <div>
           <p class="eyebrow">What we're working on</p>
@@ -101,29 +157,29 @@
         </div>
         <div class="topic-list">
           <div><span>01</span><p>Cannabis laboratory data standards and interoperability</p></div>
-          <div><span>02</span><p>Analyte and unit normalization</p></div>
-          <div><span>03</span><p>Measurement metadata such as LOD, LOQ, methods, and uncertainty</p></div>
+          <div><span>02</span><p>Analyte, unit, and result-status normalization</p></div>
+          <div><span>03</span><p>Measurement metadata such as LOD, LOQ, methods, and identifiers</p></div>
           <div><span>04</span><p>Public-data research and reproducible methodology</p></div>
-          <div><span>05</span><p>Future collaboration with growers, laboratories, researchers, and other lawful industry participants</p></div>
+          <div><span>05</span><p>Collaboration with laboratories, LIMS teams, QA groups, researchers, and other lawful industry participants</p></div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="principles">
+    <section class="section alt" id="principles">
       <div class="wrap">
         <p class="eyebrow">Principles</p>
         <div class="section-head narrow">
-          <h2>Useful research requires restraint.</h2>
-          <p>WeedDAO is designed around transparent assumptions, clear limits, and preserving the distinction between what a dataset shows and what it cannot establish.</p>
+          <h2>Useful infrastructure requires restraint.</h2>
+          <p>WeedDAO is designed around transparent assumptions, clear limits, and preserving the distinction between what data structure can establish and what it cannot.</p>
         </div>
         <div class="cards two">
           <article class="card feature">
             <h3>What we do</h3>
-            <p>Study data interoperability, document normalization assumptions, preserve source-native records, and seek expert methodological review.</p>
+            <p>Study interoperability, document normalization assumptions, preserve source-native records, flag ambiguity, and use human review where automated interpretation should stop.</p>
           </article>
           <article class="card feature">
             <h3>What we don't claim</h3>
-            <p>No laboratory rankings, no blanket claims about lab accuracy, no consumer-health conclusions, and no endorsement by cited data providers or agencies.</p>
+            <p>No laboratory rankings, no blanket claims about lab accuracy, no consumer-health conclusions, no compliance certification, and no endorsement by cited data providers or agencies.</p>
           </article>
         </div>
       </div>
@@ -133,8 +189,11 @@
       <div class="wrap contact-grid">
         <div>
           <p class="eyebrow">Get in touch</p>
-          <h2>Interested in the methodology?</h2>
-          <p>We welcome concise scientific or technical feedback, especially from analytical chemistry, laboratory QA, statistics, data standards, and measurement-science professionals.</p>
+          <h2>Working with cannabis laboratory data?</h2>
+          <p>We welcome conversations with laboratory QA, data, LIMS, compliance, measurement-science, and research teams interested in interoperability or in reviewing the demonstration audit.</p>
+          <div class="actions">
+            <a class="button primary" href="mailto:research@weeddao.org?subject=WeedDAO%20Interoperability%20Audit%20demo">Request a demo</a>
+          </div>
         </div>
         <div class="contact-box">
           <a href="mailto:research@weeddao.org">research@weeddao.org</a>
