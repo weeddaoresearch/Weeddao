@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>WeedDAO — Public-data interoperability benchmark</title>
+<meta name="description" content="Verified WeedDAO benchmark findings from public cannabis lab-result and regulatory data.">
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7faf7;color:#1f2937}
+.wrap{max-width:920px;margin:0 auto;padding:44px 20px 70px}
+.card{background:#fff;border:1px solid #dce7dd;border-radius:22px;padding:32px;box-shadow:0 8px 32px rgba(20,60,30,.05)}
+.badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2f7d46;background:#edf6ef;padding:7px 10px;border-radius:999px}
+h1{font-size:40px;line-height:1.08;margin:16px 0 12px}
+.lede{font-size:19px;line-height:1.55;color:#4b5563}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.stat{padding:16px;border:1px solid #dce7dd;border-radius:13px;background:#fbfdfb}
+.stat b{display:block;font-size:25px;color:#2f7d46;margin-bottom:4px}
+.finding{border:1px solid #dce7dd;border-radius:14px;padding:18px;margin:14px 0;background:#fbfdfb}
+.finding strong{display:block;font-size:18px;margin-bottom:7px}
+code{background:#f0f3f1;padding:2px 5px;border-radius:4px}
+.callout{margin-top:26px;padding:20px;background:#f1f7f2;border-radius:14px}
+a.btn{display:inline-block;margin-top:10px;padding:11px 16px;background:#2f7d46;color:#fff;text-decoration:none;border-radius:9px;font-weight:700}
+.small{font-size:12px;color:#6b7280;margin-top:22px;line-height:1.5}
+@media(max-width:700px){.stats{grid-template-columns:1fr}h1{font-size:32px}}
+</style>
+</head>
+<body><main class="wrap"><div class="card">
+<span class="badge">Public benchmark + preservation test: PASS</span>
+<h1>Public data shows where laboratory-result meaning needs explicit handling.</h1>
+<p class="lede">WeedDAO first audited a public New York cannabis-results extract and Washington State's CCRS lab-upload format. We then tested the v0.2-draft result model on a deterministic 350-case cohort drawn from that evidence. The harness recorded 0 silent coercions and 0 schema-invalid emitted results.</p>
+
+<div class="stats">
+<div class="stat"><b>330</b>public COA rows</div>
+<div class="stat"><b>16,357</b>parsed result objects</div>
+<div class="stat"><b>13</b>Washington CSV fields</div>
+</div>
+
+<div class="finding">
+<strong>Semantic-preservation test: 350 controlled cases</strong>
+From 16,357 scanned result objects, the harness selected 350 cases: 100 exact <code>ND</code>, 100 exact <code>&lt;LOQ</code>, 100 ordinary numeric results with units, 25 qualified values such as <code>&lt;0.1</code>, and 25 likely parser-noise objects. It classified <b>200 AUTO_FULL</b>, <b>125 PRESERVE_WITH_REVIEW</b>, and <b>25 REJECT_NOISE</b>, with <b>0 silent coercions</b> and <b>0 schema-invalid emitted results</b>. The Washington non-detect rule fixture was also represented successfully (1/1).
+</div>
+
+<div class="finding">
+<strong>1. Result state cannot always be represented as a number</strong>
+The public parsed corpus contained <b>5,251 exact <code>ND</code></b> values and <b>4,943 exact <code>&lt;LOQ</code></b> values, plus <b>1,220</b> qualified numeric strings such as <code>&lt;0.1</code>. A numeric-only destination cannot preserve those distinctions without additional semantics.
+</div>
+
+<div class="finding">
+<strong>2. The same concept can arrive under different field shapes</strong>
+Within one public parser path, cannabinoid results used <code>unit</code> while other panels used <code>units</code>. Another parser path omitted both keys. This is a downstream representation issue, not a claim about any laboratory's native LIMS.
+</div>
+
+<div class="finding">
+<strong>3. Display labels are not stable identifiers</strong>
+The audit found <b>60 canonical keys</b> associated with multiple display names. Most were case or punctuation variants, but some were materially different labels — for example one public key grouped <code>Borneol</code>, <code>(+)-Borneol</code>, and <code>(-)-Borneol</code>.
+</div>
+
+<div class="finding">
+<strong>4. Parsed COA data needs provenance and review controls</strong>
+A conservative rule flagged <b>632</b> result-shaped objects containing likely extraction artifacts such as page furniture, split analyte names, prose, or identifier-like strings in limit fields. These artifacts belong to the public parsing layer and are not attributed to the source laboratories.
+</div>
+
+<div class="finding">
+<strong>5. Regulatory CSVs can depend on semantics outside the row</strong>
+Washington's public CCRS <code>LabTest.csv</code> has <b>13 columns</b>, including <code>TestName</code>, <code>TestValue</code>, and <code>LabTestStatus</code>, but no dedicated unit, LOD, or LOQ columns. The companion guide supplies those rules externally: the unit is encoded in <code>TestName</code>, and non-detects are represented in <code>TestValue</code> as <code>&lt;</code> plus the numeric LOQ.
+</div>
+
+<div class="callout">
+<strong>What this supports:</strong><br>
+In this controlled public-data harness, the WeedDAO v0.2-draft result model preserved structured semantics where the source supplied enough context and surfaced ambiguous cases for review instead of silently guessing. The test recorded <b>0 silent coercions</b>.
+<br><br><strong>What this does not prove:</strong> production readiness, validation of any laboratory's native export, or market-wide coverage. A real sample/native export remains the next commercial validation step.
+<br><a class="btn" href="mailto:research@weeddao.org?subject=WeedDAO%20benchmark">Discuss a sample export</a>
+</div>
+
+<p class="small">Scope: one public NY extract covering two Cannlytics parser paths and three laboratory labels, plus the Washington regulatory template and companion guide. It is not a representative sample of the entire cannabis-testing market. Original source-lab PDFs/native exports were not re-opened for this audit, so parser artifacts remain attributed to the parsing layer. Benchmark audited October 2026. Campaign reference: greenleaf-wave3-followup.</p>
+</div></main>
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"62802dab2cfa45b3932cc98c9d577cab"}'></script>
+</body></html>
