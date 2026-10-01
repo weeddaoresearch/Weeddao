@@ -26,14 +26,19 @@ a.btn{display:inline-block;margin-top:10px;padding:11px 16px;background:#2f7d46;
 </style>
 </head>
 <body><main class="wrap"><div class="card">
-<span class="badge">Independent audit: PASS</span>
+<span class="badge">Public benchmark + preservation test: PASS</span>
 <h1>Public data shows where laboratory-result meaning needs explicit handling.</h1>
-<p class="lede">WeedDAO's benchmark inspected a public New York cannabis-results extract and Washington State's CCRS lab-upload format. An independent audit verified the five observational findings below. This validates the benchmark evidence — not yet a production WeedDAO transformation.</p>
+<p class="lede">WeedDAO first audited a public New York cannabis-results extract and Washington State's CCRS lab-upload format. We then tested the v0.2-draft result model on a deterministic 350-case cohort drawn from that evidence. The harness recorded 0 silent coercions and 0 schema-invalid emitted results.</p>
 
 <div class="stats">
 <div class="stat"><b>330</b>public COA rows</div>
 <div class="stat"><b>16,357</b>parsed result objects</div>
 <div class="stat"><b>13</b>Washington CSV fields</div>
+</div>
+
+<div class="finding">
+<strong>Semantic-preservation test: 350 controlled cases</strong>
+From 16,357 scanned result objects, the harness selected 350 cases: 100 exact <code>ND</code>, 100 exact <code>&lt;LOQ</code>, 100 ordinary numeric results with units, 25 qualified values such as <code>&lt;0.1</code>, and 25 likely parser-noise objects. It classified <b>200 AUTO_FULL</b>, <b>125 PRESERVE_WITH_REVIEW</b>, and <b>25 REJECT_NOISE</b>, with <b>0 silent coercions</b> and <b>0 schema-invalid emitted results</b>. The Washington non-detect rule fixture was also represented successfully (1/1).
 </div>
 
 <div class="finding">
@@ -63,8 +68,8 @@ Washington's public CCRS <code>LabTest.csv</code> has <b>13 columns</b>, includi
 
 <div class="callout">
 <strong>What this supports:</strong><br>
-An interoperability layer should preserve raw values and provenance, separate qualified result states from numeric measurements, normalize identifiers and unit fields, and flag ambiguous mappings for review.
-<br><br><strong>What this does not prove yet:</strong> that a WeedDAO production path has preserved these semantics end-to-end. That is the next validation step.
+In this controlled public-data harness, the WeedDAO v0.2-draft result model preserved structured semantics where the source supplied enough context and surfaced ambiguous cases for review instead of silently guessing. The test recorded <b>0 silent coercions</b>.
+<br><br><strong>What this does not prove:</strong> production readiness, validation of any laboratory's native export, or market-wide coverage. A real sample/native export remains the next commercial validation step.
 <br><a class="btn" href="mailto:research@weeddao.org?subject=WeedDAO%20benchmark">Discuss a sample export</a>
 </div>
 
