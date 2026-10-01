@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>WeedDAO — interoperability example</title>
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7faf7;color:#1f2937}.wrap{max-width:900px;margin:0 auto;padding:42px 20px 64px}.card{background:#fff;border:1px solid #dce7dd;border-radius:20px;padding:30px;box-shadow:0 8px 30px rgba(20,60,30,.05)}.badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2f7d46;background:#edf6ef;padding:7px 10px;border-radius:999px}h1{font-size:38px;line-height:1.1;margin:16px 0 10px}.lede{font-size:19px;line-height:1.55;color:#4b5563}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}.box{border:1px solid #dce7dd;border-radius:14px;padding:18px;background:#fbfdfb}.box h2{font-size:18px;margin:0 0 10px}pre{white-space:pre-wrap;background:#111827;color:#f9fafb;padding:15px;border-radius:10px;font-size:13px;line-height:1.5;overflow:auto}.good{border-left:4px solid #2f7d46}.warn{border-left:4px solid #9a6700}ul{line-height:1.7}.cta{margin-top:26px;padding:20px;background:#f1f7f2;border-radius:14px}a.btn{display:inline-block;margin-top:8px;padding:11px 16px;background:#2f7d46;color:#fff;text-decoration:none;border-radius:9px;font-weight:700}.small{font-size:12px;color:#6b7280;margin-top:20px}@media(max-width:700px){.grid{grid-template-columns:1fr}h1{font-size:31px}}
+</style></head><body><main class="wrap"><div class="card"><span class="badge">Illustrative example</span><h1>Why “0” may not mean “zero detected.”</h1><p class="lede">A laboratory system can store a numeric value while a report-facing result communicates a different semantic state. If downstream software keeps only the number, meaning can be lost.</p><div class="grid"><section class="box warn"><h2>Source system</h2><pre>{
+  "analyte": "Δ9-THC",
+  "value": 0,
+  "unit": "%",
+  "lod": 0.005,
+  "loq": 0.015,
+  "reported_as": "ND"
+}</pre><p><strong>Naive downstream interpretation:</strong><br>Δ9-THC = 0%</p></section><section class="box good"><h2>WeedDAO interpretation</h2><pre>{
+  "analyte_id": "delta9_thc",
+  "measurement": {"value": 0,"unit": "%"},
+  "result_state": "NOT_DETECTED",
+  "limits": {"lod": 0.005,"loq": 0.015},
+  "reported_as": "ND"
+}</pre><p><strong>Preserved meaning:</strong><br>numeric value, detection state, limits, and report-facing label remain distinct.</p></section></div><h2>What the pilot checks</h2><ul><li>analyte identifiers and aliases</li><li>measurement units and conversions</li><li>ND / below-LOQ / not-tested / omitted semantics</li><li>LOD, LOQ, action limits, and other thresholds</li><li>sample, batch, and regulatory identifiers</li></ul><div class="cta"><strong>Smallest useful pilot:</strong> one public/sample or de-identified CSV/JSON export. WeedDAO returns a human-reviewed interoperability map, gap report, and prioritized findings.<br><a class="btn" href="mailto:research@weeddao.org?subject=WeedDAO%20example%20pilot">Discuss a sample export</a></div><p class="small">Illustrative technical example; not a representation of any specific lab implementation.</p></div></main><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"62802dab2cfa45b3932cc98c9d577cab"}'></script></body></html>
