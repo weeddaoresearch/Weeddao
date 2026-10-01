@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>WeedDAO — Public-data interoperability evidence</title>
+<meta name="description" content="Preliminary WeedDAO interoperability findings from public cannabis lab and regulatory data.">
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7faf7;color:#1f2937}
+.wrap{max-width:920px;margin:0 auto;padding:44px 20px 70px}
+.card{background:#fff;border:1px solid #dce7dd;border-radius:22px;padding:32px;box-shadow:0 8px 32px rgba(20,60,30,.05)}
+.badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2f7d46;background:#edf6ef;padding:7px 10px;border-radius:999px}
+h1{font-size:40px;line-height:1.08;margin:16px 0 12px}
+.lede{font-size:19px;line-height:1.55;color:#4b5563}
+.finding{border:1px solid #dce7dd;border-radius:14px;padding:18px;margin:14px 0;background:#fbfdfb}
+.finding strong{display:block;font-size:18px;margin-bottom:7px}
+code{background:#f0f3f1;padding:2px 5px;border-radius:4px}
+.callout{margin-top:26px;padding:20px;background:#f1f7f2;border-radius:14px}
+a.btn{display:inline-block;margin-top:10px;padding:11px 16px;background:#2f7d46;color:#fff;text-decoration:none;border-radius:9px;font-weight:700}
+.small{font-size:12px;color:#6b7280;margin-top:22px;line-height:1.5}
+</style>
+</head>
+<body><main class="wrap"><div class="card">
+<span class="badge">Preliminary public-data benchmark</span>
+<h1>We found real interoperability edge cases before asking a lab for private data.</h1>
+<p class="lede">WeedDAO reviewed public cannabis lab-result data and a state regulatory CSV template to test whether result meaning can be lost when data moves between representations.</p>
+
+<div class="finding">
+<strong>1. <code>&lt;LOQ</code> is a state, not a number</strong>
+Public parsed lab-result data includes values such as <code>&lt;LOQ</code> for cannabinoids. A downstream numeric-only field must either discard that state, coerce it, or preserve it separately.
+</div>
+
+<div class="finding">
+<strong>2. Unit field names vary in downstream representations</strong>
+Observed parsed result objects use both <code>unit</code> and <code>units</code>. That does not mean the source lab is wrong; it means integration code should normalize field identity while preserving source provenance.
+</div>
+
+<div class="finding">
+<strong>3. Limits can become type-unstable</strong>
+Public parsed examples include numeric and string-like values in fields labeled as LOD/LOQ. A robust interoperability layer should separate raw reported text, interpreted numeric limits, and review/confidence.
+</div>
+
+<div class="finding">
+<strong>4. Parsed COAs can contain non-result text in result-shaped objects</strong>
+Public parsed data includes apparent footer/disclaimer/page fragments represented in result-like structures. A normalization layer should not assume every parsed object is a true analyte result.
+</div>
+
+<div class="finding">
+<strong>5. Washington's CCRS lab CSV uses a generic <code>TestValue</code> shape</strong>
+The public template includes <code>TestName</code>, <code>TestValue</code>, and <code>LabTestStatus</code>, but no dedicated unit, LOD, or LOQ columns. Some meaning therefore depends on conventions or external regulatory context.
+</div>
+
+<div class="callout">
+<strong>What WeedDAO does with this:</strong><br>
+Preserve raw values, normalize analyte and unit identity, separate result-state semantics from numeric measurements, retain limits and provenance, and flag ambiguous mappings for review.
+<br><a class="btn" href="mailto:research@weeddao.org?subject=WeedDAO%20public-data%20benchmark">Discuss a sample export</a>
+</div>
+
+<p class="small">Important limitation: the lab examples referenced here come from public parsed/curated data, not necessarily production-native exports from the named laboratories. Parser artifacts are not attributed to originating labs without checking the original source document. This benchmark describes representation differences; it does not rank or grade laboratories, LIMS vendors, or regulators.</p>
+<p class="small">Campaign reference: infinitecal-named-benchmark</p></div></main>
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"62802dab2cfa45b3932cc98c9d577cab"}'></script>
+</body></html>
